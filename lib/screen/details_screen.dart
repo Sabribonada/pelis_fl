@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pelis_fl/widgets/card_swiper.dart';
+import 'package:pelis_fl/widgets/widgets.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key});
@@ -12,7 +12,13 @@ class DetailsScreen extends StatelessWidget {
         body: CustomScrollView(
       slivers: [
         _CustomAppBar(),
-        SliverList(delegate: SliverChildListDelegate([_PosterAndTitle()]))
+        SliverList(
+            delegate: SliverChildListDelegate([
+          _PosterAndTitle(),
+          _details(),
+          _details(),
+          const CastingCards()
+        ]))
       ],
     ));
   }
@@ -33,8 +39,9 @@ class _CustomAppBar extends StatelessWidget {
           width: double.infinity,
           alignment: Alignment.bottomCenter,
           color: Colors.black12,
+          padding: EdgeInsets.only(bottom: 10),
           child: const Text(
-            'movie-title',
+            'movie.title',
             style: TextStyle(fontSize: 16),
           ),
         ),
@@ -64,7 +71,7 @@ class _PosterAndTitle extends StatelessWidget {
               fit: BoxFit.cover),
         ),
         const SizedBox(
-          width: 20,
+          width: 25,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +84,7 @@ class _PosterAndTitle extends StatelessWidget {
             ),
             Text(
               'movie-original-title',
-              style: textTheme.titleSmall,
+              style: textTheme.titleMedium,
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
             ),
@@ -97,6 +104,23 @@ class _PosterAndTitle extends StatelessWidget {
           ],
         )
       ]),
+    );
+  }
+}
+
+class _details extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 15),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 30,
+      ),
+      child: Text(
+        'Fugiat esse fugiat ad enim dolore eu velit fugiat dolor. Ea laboris dolor ut sunt aliqua reprehenderit. Ullamco laborum pariatur do est nulla culpa labore sunt in nostrud aliqua anim aliqua.',
+        textAlign: TextAlign.justify,
+        style: Theme.of(context).textTheme.titleSmall,
+      ),
     );
   }
 }
