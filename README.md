@@ -1,7 +1,6 @@
 # pelis_fl
 
-A new Flutter project.
-
+Proyecto mobile de listado de películas, título, descripción, actores y puntaje de la misma.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
