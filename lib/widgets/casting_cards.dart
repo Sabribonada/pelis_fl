@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:pelis_fl/models/models.dart';
 import 'package:pelis_fl/providers/movies_provider.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +31,7 @@ class CastingCards extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: 10,
                 itemBuilder: (_, int index) {
-                  return _CastCard(actor: cast[index]);
+                  return _CastCard(cast[index]);
                 }),
           );
         });
@@ -42,7 +41,7 @@ class CastingCards extends StatelessWidget {
 class _CastCard extends StatelessWidget {
   final Cast actor;
 
-  const _CastCard({super.key, required this.actor});
+  const _CastCard(this.actor);
 
   @override
   Widget build(BuildContext context) {

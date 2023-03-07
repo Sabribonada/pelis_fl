@@ -56,7 +56,7 @@ class Cast {
 
   get fullProfilePath {
     if (profilePath != null) {
-      return 'https://image.tmdb.org/t/p/w500${this.profilePath}';
+      return 'https://image.tmdb.org/t/p/w500$profilePath';
     }
     return 'https://i.stack.imgur.com/GNhxO.png';
   }
@@ -79,44 +79,4 @@ class Cast {
         department: json["department"],
         job: json["job"],
       );
-}
-
-enum Department {
-  ACTING,
-  CREW,
-  CAMERA,
-  DIRECTING,
-  PRODUCTION,
-  SOUND,
-  WRITING,
-  EDITING,
-  ART,
-  COSTUME_MAKE_UP,
-  VISUAL_EFFECTS
-}
-
-final departmentValues = EnumValues({
-  "Acting": Department.ACTING,
-  "Art": Department.ART,
-  "Camera": Department.CAMERA,
-  "Costume & Make-Up": Department.COSTUME_MAKE_UP,
-  "Crew": Department.CREW,
-  "Directing": Department.DIRECTING,
-  "Editing": Department.EDITING,
-  "Production": Department.PRODUCTION,
-  "Sound": Department.SOUND,
-  "Visual Effects": Department.VISUAL_EFFECTS,
-  "Writing": Department.WRITING
-});
-
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
 }

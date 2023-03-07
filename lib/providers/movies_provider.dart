@@ -1,7 +1,4 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
-import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:pelis_fl/models/models.dart';
 
@@ -57,7 +54,6 @@ class MoviesProvider extends ChangeNotifier {
     final creditsResponse = CreditsResponse.fromJson(jsonData);
 
     movieCast[movieId] = creditsResponse.cast;
-    print(creditsResponse.cast);
     return creditsResponse.cast;
   }
 
