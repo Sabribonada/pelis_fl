@@ -72,7 +72,8 @@ class MovieSearchDelegate extends SearchDelegate {
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
-      IconButton(icon: const Icon(Icons.delete), onPressed: () => query = '')
+      IconButton(
+          icon: const Icon(Icons.clear_rounded), onPressed: () => query = '')
     ];
   }
 

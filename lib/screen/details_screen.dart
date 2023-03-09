@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:pelis_fl/models/models.dart';
 import 'package:pelis_fl/widgets/widgets.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/movies_provider.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final moviesProvider = Provider.of<MoviesProvider>(context);
     final Movie movie = ModalRoute.of(context)!.settings.arguments as Movie;
     return Scaffold(
         body: CustomScrollView(
@@ -22,7 +26,13 @@ class DetailsScreen extends StatelessWidget {
           _Details(
             movie: movie,
           ),
-          CastingCards(movie.id)
+          CastingCards(movie.id),
+          Text(
+            'Similar to ${movie.title}',
+            textAlign: TextAlign.justify,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          SimilarMoviesWidget(movie.title, movie.id),
         ]))
       ],
     ));

@@ -21,15 +21,22 @@ class HomeScreen extends StatelessWidget {
                 icon: const Icon(Icons.search))
           ],
         ),
-        body: Column(
-          children: [
-            CardSwiperWiget(movies: moviesProvider.onDisplayMovies),
-            MovieSlider(
-              movies: moviesProvider.popularMovies,
-              title: 'Popular movies',
-              onNextPage: () => moviesProvider.getPopularMovies(),
-            )
-          ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              CardSwiperWiget(movies: moviesProvider.onDisplayMovies),
+              MovieSlider(
+                movies: moviesProvider.upcomingMovies,
+                title: 'Upcoming movies ',
+                onNextPage: () => moviesProvider.getUpcomingMovies(),
+              ),
+              MovieSlider(
+                movies: moviesProvider.popularMovies,
+                title: 'Popular movies',
+                onNextPage: () => moviesProvider.getPopularMovies(),
+              ),
+            ],
+          ),
         ));
   }
 }

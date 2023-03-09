@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Pelisxd',
+      title: 'Películas',
       initialRoute: 'home',
       theme:
           ThemeData(appBarTheme: const AppBarTheme(color: Colors.deepPurple)),

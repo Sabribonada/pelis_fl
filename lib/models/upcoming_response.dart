@@ -1,13 +1,13 @@
 // To parse this JSON data, do
 //
-//     final nowPlayingResponse = nowPlayingResponseFromMap(jsonString);
+//     final upcomingResponse = upcomingResponseFromMap(jsonString);
 
 import 'dart:convert';
 
 import 'package:pelis_fl/models/models.dart';
 
-class NowPlayingResponse {
-  NowPlayingResponse({
+class UpcomingResponse {
+  UpcomingResponse({
     required this.dates,
     required this.page,
     required this.results,
@@ -21,11 +21,11 @@ class NowPlayingResponse {
   int totalPages;
   int totalResults;
 
-  factory NowPlayingResponse.fromJson(String str) =>
-      NowPlayingResponse.fromMap(json.decode(str));
+  factory UpcomingResponse.fromJson(String str) =>
+      UpcomingResponse.fromMap(json.decode(str));
 
-  factory NowPlayingResponse.fromMap(Map<String, dynamic> json) =>
-      NowPlayingResponse(
+  factory UpcomingResponse.fromMap(Map<String, dynamic> json) =>
+      UpcomingResponse(
         dates: Dates.fromMap(json["dates"]),
         page: json["page"],
         results: List<Movie>.from(json["results"].map((x) => Movie.fromMap(x))),
@@ -34,8 +34,8 @@ class NowPlayingResponse {
       );
 }
 
-class _Dates {
-  _Dates({
+class Dates {
+  Dates({
     required this.maximum,
     required this.minimum,
   });
@@ -43,9 +43,11 @@ class _Dates {
   DateTime maximum;
   DateTime minimum;
 
-  factory _Dates.fromJson(String str) => _Dates.fromMap(json.decode(str));
+  factory Dates.fromJson(String str) => Dates.fromMap(json.decode(str));
 
-  factory _Dates.fromMap(Map<String, dynamic> json) => _Dates(
+  String toJson() => json.encode(toMap());
+
+  factory Dates.fromMap(Map<String, dynamic> json) => Dates(
         maximum: DateTime.parse(json["maximum"]),
         minimum: DateTime.parse(json["minimum"]),
       );
